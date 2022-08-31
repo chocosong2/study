@@ -90,6 +90,45 @@ const students = [
 ];
 
 //find 사용하기 
-let studentResult = students.find(function(student,index){
-    return student.score === 90;
-})
+//학생의 점수가 90점이면 true를  반환. find는 true인 배열의 요소를 반환. 
+
+let studentResult = students.find(student => student.score === 90);
+console.log(studentResult);
+
+
+// Q6. make an array of enrolled students 학생들 중 수업을 등록한 학생만 찾아라 
+
+let enrolledStudent = students.find(student => student.enrolled === true);
+console.log(enrolledStudent);
+
+//답안 ↓
+let enrolledStudent2 = students.filter((student)=>student.enrolled);
+console.log('수업을 등록한 학생은?' , enrolledStudent2);
+
+
+// Q7. make an array containing only the students' scores result should be : [45,80,90,66,88]
+// 학생들의 점수를 새 배열로 출력하기
+
+//이렇게 하니까 잘 안된다...짝수 점수를 출력하려면 어떻게 해야할까?  
+//let integerScore = students.find(student => student.score % 2 == 0);
+//console.log(integerScore);
+
+let integerScore = students.map((student)=>student.score);
+console.log(integerScore);
+
+// Q8. Check if there is a student with the score lower than 50 
+let score50 = students.find(student => student.score<50);
+console.log(score50);
+
+//답안 ↓ some 활용
+let student50 = students.some((student => student.score<50));
+console.log(student50); // 하나라도 조건에 만족하는 값이 있다면 true 반환 
+
+let student50_2 = students.every(student => student.score >=50);
+console.log(student50_2); //모든 학생의 점수가 50점보다 낮다면 ? - 모두는 아니므로 false 
+
+// Q9. compute students' average score 
+let ave = students.reduce((prev,curr)=>prev+curr.score,0)
+console.log(ave/students.length);
+
+// Q10. 
