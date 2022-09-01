@@ -131,4 +131,25 @@ console.log(student50_2); //모든 학생의 점수가 50점보다 낮다면 ? -
 let ave = students.reduce((prev,curr)=>prev+curr.score,0)
 console.log(ave/students.length);
 
-// Q10. 
+// Q10. make a string containing all the scores result should be : '45,80,90,66,88'
+//배열을 문자열로 바꾸기 
+
+let string = students
+    .map(student => student.score)
+    .filter((score) => score >= 50) //50점 이상인 점수만 ! 
+    .join();
+console.log(string);
+
+//Bonus! do Q10 sorted in ascending order result should be: '45,66,80,88,90'
+
+// let sortedString = students
+//     .map(student => student.score)
+//     .sort()
+//     .join()
+// console.log(sortedString);
+
+let sortedString = students
+    .map(student => student.score)
+    .sort((a,b)=>a-b)
+    .join();
+console.log(sortedString);
